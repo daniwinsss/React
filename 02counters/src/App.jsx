@@ -7,14 +7,12 @@ function App() {
   // let counter=5;
   let [counter,setCounter]=useState(5);
   function Addvalue(){
-    counter++;
-    counter=counter<=20?counter:20;
-    setCounter(counter);
+    setCounter(counter=>counter+1);
+    setCounter(counter=>counter+1);
+    // setCounter(counter+1);
   }
   function Decreasevalue(){
-    counter--;
-    counter=Math.max(counter,0);
-    setCounter(counter);
+    setCounter(counter-1);
   }
   return (
     <>
