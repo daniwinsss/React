@@ -5,10 +5,11 @@ function InputBox({
     amount,
     onAmountChange,
     onCurrencyChange,
-    currencyOptions=[],
-    selectCurrency="usd",
-    amountDisable=false,
-    currencyDisable=false,
+    currencyOptions = [],
+    selectCurrency = "usd",
+    amountDisable = false,
+    currencyDisable = false,
+    className = "",
 }) {
    const amountInputId = useId()
 
