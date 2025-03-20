@@ -1,3 +1,6 @@
-import header from './header/header.jsx';
-import footer from './footer/footer.jsx';
-export { header, footer };
+import Header from './Header/Header.jsx';
+import Footer from './Footer/Footer.jsx';
+import Container from './Container/Container.jsx'; 
+import Logo from './Logo.jsx'; 
+import LogoutBtn from './Header/LogoutBtn.jsx';
+export { Header, Footer, Container , Logo , LogoutBtn};
