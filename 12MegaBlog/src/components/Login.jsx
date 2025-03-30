@@ -52,9 +52,9 @@ function Login() {
                         required: true,
                         validate: {
                             matchPatern : (value) => /^([\w\.\-_]+)?\w+@[\w-_]+(\.\w+){1,}$/.test(value) || "Please enter a valid email address",
-                        },
+                        }
                     })}/>
-                    <input 
+                    <Input
                     label = "password"
                     placeholder='Enter your password'
                     type = "password"  
