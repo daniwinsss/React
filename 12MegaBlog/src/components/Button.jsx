@@ -1,4 +1,4 @@
-import react from 'react';
+import React from 'react'; // Fixed capitalization
 function Button({
     children,
     type = 'button',
@@ -8,7 +8,11 @@ function Button({
     ...props
 }){
     return(
-        <button className = {`px-4 py-2 rounded-lg ${bgColor} ${textColor} ${className}`}{...props}>
+        <button 
+            type={type} // Added type attribute
+            className={`px-4 py-2 rounded-lg ${bgColor} ${textColor} ${className}`} 
+            {...props}
+        >
             {children}
         </button>
     )

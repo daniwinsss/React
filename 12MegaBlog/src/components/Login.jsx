@@ -1,11 +1,12 @@
-import react from 'react';
+import React from 'react';
 import {useState} from 'react';
 import {useNavigate,Link} from 'react-router-dom';
-import {Login as authLogin} from '../store/authSlice';
+import {login as authLogin} from '../store/authSlice';
 import {Button,Input,Logo} from './index';
 import {useDispatch} from 'react-redux';
 import authService from '../appwrite/auth';
 import {useForm} from "react-hook-form";
+
 function Login() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function Login() {
             }
         }
         catch(error){
-            setError(error.message);
+            setError(error?.message || "An unexpected error occurred.");
         }
     } 
     return(
@@ -48,22 +49,27 @@ function Login() {
             {error && <p className='text-red-600 mt-8 text-center'>{error}</p>}
             <form onSubmit={handleSubmit(login)} className = "mt-8">
                 <div className='space-y-5'>
-                    <input label = "Email: " placeholder='Enter your email' type = "email" {...register("email",{
-                        required: true,
-                        validate: {
-                            matchPatern : (value) => /^([\w\.\-_]+)?\w+@[\w-_]+(\.\w+){1,}$/.test(value) || "Please enter a valid email address",
-                        }
-                    })}/>
                     <Input
-                    label = "password"
-                    placeholder='Enter your password'
-                    type = "password"  
-                    {...register("password",{
-                        required : true
-                    })}
+                        label="Email: "
+                        placeholder="Enter your email"
+                        type="email"
+                        {...register("email", {
+                            required: true,
+                            validate: {
+                                matchPattern: (value) =>
+                                    /^([\w\.\-_]+)?\w+@[\w-_]+(\.\w+){1,}$/.test(value) || "Please enter a valid email address",
+                            },
+                        })}
                     />
-                    <button type = "submit"
-                    className='w-full'>Sign in</button>
+                    <Input
+                        label="Password: "
+                        placeholder="Enter your password"
+                        type="password"
+                        {...register("password", {
+                            required: true,
+                        })}
+                    />
+                    <Button type="submit" className='w-full'>Sign in</Button>
                 </div>
             </form>
             </div>
