@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { AuthService } from "../appwrite/auth";
+import authService  from "../appwrite/auth.js";
 import { useNavigate, Link } from "react-router-dom";
 import { login } from "../store/authSlice";
 import { Button, Input, Logo } from "./index";
@@ -16,9 +16,9 @@ function Signup() {
     const create = async (data) => {
         setError("");
         try {
-            const userData = await AuthService.createAccount(data);
+            const userData = await authService.createAccount(data);
             if (userData) {
-                const userData = await AuthService.getCurrentUser();
+                const userData = await authService.getCurrentUser();
                 if (userData) {
                     dispatch(login(userData)); // Fixed action name
                 }
@@ -61,9 +61,8 @@ function Signup() {
                             {...register("email", {
                                 required: true,
                                 validate: {
-                                    matchPatern: (value) =>
-                                        /^([\w\.\-_]+)?\w+@[\w-_]+(\.\w+){1,}$/.test(value) ||
-                                        "Please enter a valid email address",
+                                    matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
+                                        "Email address must be a valid address",
                                 },
                             })}
                         />
